@@ -12,8 +12,7 @@ public class Main {
      * link: t.me/TCMetroTransitBot
      *
      * Use this token to access HTTP API:
-     * 526452962:AAHN2Eu_oCVHevipOgearrFLRMCt-jOPYjA
-     * 
+     *
      * @param args
      */
 
