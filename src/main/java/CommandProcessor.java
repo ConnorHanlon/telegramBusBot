@@ -6,14 +6,19 @@ public class CommandProcessor {
    if (!update.hasMessage()) {
      //  handle error, send message to telegram
    }
-   String chat_id = update.getMessage().getChatId().toString();
-   String user_text = update.getMessage().getText();
-   String[] userRequest = text.split("\\s+");
-   String userCommand = userRequest[0];
-   String messageToUser;
+   // StringBuilder sb = new StringBuilder(update.getMessage().getChatID.toString());
+   String chatID = update.getMessage().getChatId().toString();
+   String userText = update.getMessage().getText();
+   StringBuilder userRequestBuilder = new StringBuilder(chatID);
+   userRequestBuilder.append(" ");
+   userRequestBuilder.append(userText)
+   String userRequest = userRequestBuilder.toString();
+   // String[] userRequest = text.split("\\s+");
+   // String userCommand = userRequest[0];
+   // String messageToUser;
    try {
-     String busResponse = BusCommands.ProcessCommand(userCommand);
-     TelegramCommands.ProcessCommand(chat_id, bus_response);
+     String busResponse = BusCommands.ProcessCommand(userRequest);
+     TelegramCommands.ProcessCommand(busResponse);
    } catch (IOException e) {
      e.printStackTrace();
    }

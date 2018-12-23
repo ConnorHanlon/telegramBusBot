@@ -2,9 +2,14 @@ import java.net.URL;
 
 public class BusCommands {
 
-  public void ProcessCommand(String userCommand) {
-    
+  public String ProcessCommand(String userRequest) {
+    String[] request = userRequest.split("\\s+");
+    // element 0 is chat id, rest is request
+
   }
 
-  private URL makeMetroTransitURL(String)
+  private URL makeMetroTransitURL(String) {
+    return null;
+  }
+
 }
