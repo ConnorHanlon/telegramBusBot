@@ -11,15 +11,10 @@ public class CommandProcessor {
    String[] userRequest = text.split("\\s+");
    String userCommand = userRequest[0];
    String messageToUser;
-   // try {
-   // String bus_response = BusCommand.Process(userCommand)
-   // TelegramCommand.Process(chat_id, bus_response)
-   // } catch (IOException e) {
-   //     e.printStackTrace()
-   //
-   // switch (userCommand) {
-   //   case "/departures":
-        // BusCommand.Get
- // }
-
+   try {
+     String busResponse = BusCommands.ProcessCommand(userCommand);
+     TelegramCommands.ProcessCommand(chat_id, bus_response);
+   } catch (IOException e) {
+     e.printStackTrace();
+   }
 }
