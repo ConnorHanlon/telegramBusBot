@@ -25,8 +25,9 @@ public class HandleRequest {
      */
     public static StringBuffer makeBusHttpRequest(String inStr) throws IOException {
         try {
-            URL url = new URL(BUS_URL.concat(inStr));
-            return makeHTTPRequest(url);
+//            URL url = new URL(BUS_URL.concat(inStr));
+//            return makeHTTPRequest(url);
+            return makeHTTPRequest(URLCreator.makeMetroTransitURL(inStr));
         } catch (IOException e) {
             System.out.println("Failure: Unable to make Bus HTTP Request");
             e.printStackTrace();
@@ -34,16 +35,16 @@ public class HandleRequest {
         return null;
     }
 
-    public static StringBuffer makeTeleHTTPRequest(String inStr) {
-        try {
-            URL url = new URL(TELEGRAM_UPDATE_URL.concat(inStr));
-            return makeHTTPRequest(url);
-        } catch (IOException e) {
-            System.out.println("Failure: Unable to make Telegram HTTP Request");
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static StringBuffer makeTeleHTTPRequest(String inStr) {
+//        try {
+//            URL url = new URL(TELEGRAM_UPDATE_URL.concat(inStr));
+//            return makeHTTPRequest(url);
+//        } catch (IOException e) {
+//            System.out.println("Failure: Unable to make Telegram HTTP Request");
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     private static StringBuffer makeHTTPRequest(URL url) throws IOException {
         HttpURLConnection con = (HttpURLConnection)url.openConnection();

@@ -1,4 +1,4 @@
-import TwinCitiesTransit.*;
+import TwinCitiesTransitSchema.*;
 import com.google.gson.*;
 
 

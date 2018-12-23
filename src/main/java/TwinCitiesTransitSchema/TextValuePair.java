@@ -1,4 +1,4 @@
-package TwinCitiesTransit;
+package TwinCitiesTransitSchema;
 
 import com.google.gson.annotations.SerializedName;
 
