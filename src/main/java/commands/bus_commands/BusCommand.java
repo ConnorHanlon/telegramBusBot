@@ -1,10 +1,10 @@
-package com.commands.buscommands;
+package commands.bus_commands;
 
 import com.google.gson.*;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.Type;
 
+import com.google.gson.reflect.TypeToken;
 import com.requests.tools.HTTPRequests;
 
 /** abstract class for all bus commands. All commands have the same execute,
@@ -12,21 +12,25 @@ import com.requests.tools.HTTPRequests;
     this one must implement their own formatRequest method. **/
 public abstract class BusCommand<T> {
 
-  public static List<T> execute(String request) {
+  public String execute(String request) {
     try {
       String formattedRequest = formatRequest(request);
-      String reponse = HTTPRequests.makeMetroTransitRequest(formattedRequest);
+      String response = HTTPRequests.makeMetroTransitRequest(formattedRequest);
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
       JsonParser jsonParser = new JsonParser();
       JsonArray jsonArray = (jsonParser.parse(response.toString())).getAsJsonArray();
-      T[] responseArray = gson.fromJson(jsonArray, T[].class);
-      return Arrays.asList(responseArray);
-    } catch (IOException e) {
+      Type typeOfT = new TypeToken<T[]>(){}.getType();
+      T[] responseArray = gson.fromJson(jsonArray, typeOfT);
+      String formattedResponse = formatResponse(responseArray);
+      return formattedResponse;
+    } catch (Exception e) {
       System.out.println("Failure: getDepartures failed to open URL.");
       e.printStackTrace();
     }
     return null;
   }
+
+  public abstract String formatResponse(T[] response);
 
   public abstract String formatRequest(String request);
 }

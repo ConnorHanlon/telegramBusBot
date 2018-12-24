@@ -1,4 +1,4 @@
-package com.requests.tools;
+package http_request_tools;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,9 +14,17 @@ public class URLCreator {
 
 
     public static URL makeMetroTransitURL(String userRequestInfo) {
-      URL url = new URL(BUS_URL.concat(userRequestInfo));
-      return url;
+      try {
+        URL url = new URL(BUS_URL.concat(userRequestInfo));
+        return url;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      return null;
     }
+
+    // public static String
+
 
     // public static URL makeTelegramUpdateURL(String userRequestInfo) {
     //   URL url = new URL(BUS_URL.concat(userRequestInfo));

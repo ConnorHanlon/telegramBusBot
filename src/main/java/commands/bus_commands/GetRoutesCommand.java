@@ -1,10 +1,10 @@
-package com.commands.buscommands;
+package commands.bus_commands;
 
 import TwinCitiesTransitSchema.NextTripRoute;
 
-public class GetRoutesCommand implements BusCommand<NextTripRoute> {
+public class GetRoutesCommand extends BusCommand<NextTripRoute> {
 
-  @override
+  @Override
   public String formatRequest(String request) {
     return "Routes?format=json";
   }

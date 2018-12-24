@@ -1,4 +1,10 @@
-package com.requests.tools;
+package http_request_tools;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /** A class that makes the HTTP requests to both Metro Transit and Telegram.**/
 public class HTTPRequests {

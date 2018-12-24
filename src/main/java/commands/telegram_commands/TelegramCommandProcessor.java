@@ -1,6 +1,9 @@
-// package com.commands.telegramcommands;
+ package commands.telegram_commands;
 
-//public class TelegramController {
-//
+public class TelegramCommandProcessor {
+
 //  public StringBuffer
-//}
+    public void doNothing() {
+        int x = 1;
+    }
+}
