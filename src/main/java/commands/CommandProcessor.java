@@ -1,3 +1,5 @@
+package com.command;
+
 import org.telegram.telegrambots.api.objects.Update;
 
 public class CommandProcessor {
@@ -17,8 +19,8 @@ public class CommandProcessor {
    // String userCommand = userRequest[0];
    // String messageToUser;
    try {
-     String busResponse = BusCommands.ProcessCommand(userRequest);
-     TelegramCommands.ProcessCommand(busResponse);
+     String busResponse = BusCommandProcessor.ProcessCommand(userRequest);
+     TelegramCommandProcessor.ProcessCommand(busResponse);
    } catch (IOException e) {
      e.printStackTrace();
    }
