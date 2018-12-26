@@ -20,7 +20,7 @@ public class HTTPRequests {
     }
     return response;
   }
-  
+
   private static String makeHTTPRequest(URL url) throws IOException {
     HttpURLConnection con = (HttpURLConnection)url.openConnection();
     con.setRequestMethod("GET");
@@ -32,5 +32,12 @@ public class HTTPRequests {
     }
     input.close();
     return response.toString();
+  }
+
+  public static void sendToTelegramUser(String chat_id, String messageToUser) throws IOException {
+    StringBuilder message = new StringBuilder(chat_id);
+    message.append("&text=");
+    message.append(messageToUser);
+    URL url = URLCreator.makeTelegramUserURL(message.toString());
   }
 }

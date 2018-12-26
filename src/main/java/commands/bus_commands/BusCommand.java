@@ -1,11 +1,10 @@
 package commands.bus_commands;
 
 import com.google.gson.*;
-import java.io.IOException;
 import java.lang.reflect.Type;
 
 import com.google.gson.reflect.TypeToken;
-import com.requests.tools.HTTPRequests;
+import http_request_tools.HTTPRequests;
 
 /** abstract class for all bus commands. All commands have the same execute,
     however the way they format the request is different and classes that extend

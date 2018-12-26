@@ -7,10 +7,11 @@ import java.util.List;
 
 public class GetDirectionsCommand extends BusCommand<TextValuePair> {
 
+  @Override
   public String formatResponse(TextValuePair[] responses) {
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
-    for (TextValuePair response : responses) {
+    for (TextValuePair response : responseList) {
       formattedResponse.append("Direction: " + response.getText() + " - " + response.getValue() + "\n");
     }
     return formattedResponse.toString();

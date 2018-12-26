@@ -1,3 +1,5 @@
+import http_request_tools.URLCreator;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;

@@ -8,7 +8,7 @@ public class BusCommandProcessor {
   /** Determines the user's command, and calls the corresponding bus command
       which returns a response. If a command is not recognized, then the
       response is formatted to return Unrecognized command. **/
-  public static String ProcessCommand(String userRequest) {
+  public static String processCommand(String userRequest) {
     String[] request = userRequest.split("\\s+");
     String[] commandArgsArray = Arrays.copyOfRange(request, 1, request.length);
     String commandArguments  = String.join(" ", commandArgsArray);
