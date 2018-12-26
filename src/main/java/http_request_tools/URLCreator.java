@@ -23,13 +23,4 @@ public class URLCreator {
       URL url = new URL(TELEGRAM_SEND_MESSAGE_URL.concat(messageToUser));
       return url;
     }
-    // public static String
-
-
-    // public static URL makeTelegramUpdateURL(String userRequestInfo) {
-    //   URL url = new URL(BUS_URL.concat(userRequestInfo));
-    //   return url;
-    // }
-    //
-    // public static URL
 }

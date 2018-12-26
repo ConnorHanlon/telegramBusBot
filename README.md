@@ -2,9 +2,14 @@
 TODO:
 - Re-adjust to command pattern
 - Pull Webhook out of HandleRequest
-- Maybe create class dedicated to storing and retrieving website urls
-- create a formatter in the URLCreator class for each of the bus commands, and
-  change the implementation of format such that the individual commands call
-  the required formatter from URLCreator.
 
-- Create telegram command classes
+- Fix generics for BusCommand and other commands
+- Add bus commands
+- Add commentary to commands on the user side of bot
+- Remove classes no longer in use
+
+- setup database for saving times to notify users inside of telegram commands
+
+- Add Javadocs to generate documentation of bus bot
+
+- redeploy new bus bot
