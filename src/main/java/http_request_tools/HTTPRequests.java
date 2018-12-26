@@ -39,5 +39,9 @@ public class HTTPRequests {
     message.append("&text=");
     message.append(messageToUser);
     URL url = URLCreator.makeTelegramUserURL(message.toString());
+    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+    con.setRequestMethod("POST");
+    con.getInputStream();
+    con.disconnect();
   }
 }

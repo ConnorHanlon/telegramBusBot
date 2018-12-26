@@ -16,11 +16,11 @@ public class BusCommandProcessor {
 //    StringBuilder response = new StringBuilder();
     String response;
     switch (command) {
-      case "/routes":
-          GetRoutesCommand getRoutes = new GetRoutesCommand();
-//          response.append(getRoutes.execute(commandArguments));
-          response = getRoutes.execute(commandArguments);
-          break;
+//      case "/routes":
+//          GetRoutesCommand getRoutes = new GetRoutesCommand();
+////          response.append(getRoutes.execute(commandArguments));
+//          response = getRoutes.execute(commandArguments);
+//          break;
       case "/directions":
           GetDirectionsCommand getDirections = new GetDirectionsCommand();
 //          response.append(getDirections.execute(commandArguments));

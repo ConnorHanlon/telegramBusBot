@@ -1,5 +1,6 @@
 package commands.bus_commands;
 
+import TwinCitiesTransitSchema.TextValuePair;
 import com.google.gson.*;
 import java.lang.reflect.Type;
 
@@ -9,7 +10,8 @@ import http_request_tools.HTTPRequests;
 /** abstract class for all bus commands. All commands have the same execute,
     however the way they format the request is different and classes that extend
     this one must implement their own formatRequest method. **/
-public abstract class BusCommand<T> {
+//public abstract class BusCommand<T> {
+public abstract class BusCommand {
 
   public String execute(String request) {
     try {
@@ -17,9 +19,9 @@ public abstract class BusCommand<T> {
       String response = HTTPRequests.makeMetroTransitRequest(formattedRequest);
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
       JsonParser jsonParser = new JsonParser();
-      JsonArray jsonArray = (jsonParser.parse(response.toString())).getAsJsonArray();
-      Type typeOfT = new TypeToken<T[]>(){}.getType();
-      T[] responseArray = gson.fromJson(jsonArray, typeOfT);
+      JsonArray jsonArray = (jsonParser.parse(response)).getAsJsonArray();
+      Type typeOfT = new TypeToken<TextValuePair[]>(){}.getType();
+      TextValuePair[] responseArray = gson.fromJson(jsonArray, typeOfT);
       String formattedResponse = formatResponse(responseArray);
       return formattedResponse;
     } catch (Exception e) {
@@ -29,7 +31,7 @@ public abstract class BusCommand<T> {
     return null;
   }
 
-  public abstract String formatResponse(T[] response);
+  public abstract String formatResponse(TextValuePair[] response);
 
   public abstract String formatRequest(String request);
 }

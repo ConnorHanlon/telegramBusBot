@@ -5,14 +5,15 @@ import TwinCitiesTransitSchema.TextValuePair;
 import java.util.Arrays;
 import java.util.List;
 
-public class GetDirectionsCommand extends BusCommand<TextValuePair> {
+//public class GetDirectionsCommand extends BusCommand<TextValuePair> {
+public class GetDirectionsCommand extends BusCommand {
 
   @Override
   public String formatResponse(TextValuePair[] responses) {
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
     for (TextValuePair response : responseList) {
-      formattedResponse.append("Direction: " + response.getText() + " - " + response.getValue() + "\n");
+      formattedResponse.append("Direction:%20" + response.getText() + "%20-%20" + response.getValue() + "%0A");
     }
     return formattedResponse.toString();
   }

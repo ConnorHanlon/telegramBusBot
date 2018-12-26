@@ -28,7 +28,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-       port(getHerokuAssignedPort());
+//       port(getHerokuAssignedPort());
+
 //        post("/mtbotmain", (req, res) -> {
 //            Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //            Update update = gson.fromJson(req.body(), Update.class);
@@ -43,6 +44,7 @@ public class Main {
 //            res.status(200);
 //            return "MetroTransitBot Server";
 //        });
+        port(80); // 80 88 443 8443
         post("/mtbotmain", (req, res) -> {
             // handleCommand("594886854", "/directions 2");
             // messages.sendMessage()

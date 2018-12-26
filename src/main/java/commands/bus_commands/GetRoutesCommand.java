@@ -5,9 +5,10 @@ import TwinCitiesTransitSchema.NextTripRoute;
 import java.util.Arrays;
 import java.util.List;
 
-public class GetRoutesCommand extends BusCommand<NextTripRoute> {
+//public class GetRoutesCommand extends BusCommand<NextTripRoute> {
+public abstract class GetRoutesCommand extends BusCommand{
 
-  @Override
+//  @Override
   public String formatResponse(NextTripRoute[] responses) {
     List<NextTripRoute> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
