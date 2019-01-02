@@ -13,25 +13,21 @@ public class BusCommandProcessor {
     String[] commandArgsArray = Arrays.copyOfRange(request, 1, request.length);
     String commandArguments  = String.join(" ", commandArgsArray);
     String command = request[0];
-//    StringBuilder response = new StringBuilder();
     String response;
     switch (command) {
-//      case "/routes":
-//          GetRoutesCommand getRoutes = new GetRoutesCommand();
-////          response.append(getRoutes.execute(commandArguments));
-//          response = getRoutes.execute(commandArguments);
-//          break;
+     case "/routes":
+         response = GetRoutesCommand.execute(commandArguments);
+         break;
       case "/directions":
-          GetDirectionsCommand getDirections = new GetDirectionsCommand();
-//          response.append(getDirections.execute(commandArguments));
-          response = getDirections.execute(commandArguments);
+          response = GetDirectionsCommand.execute(commandArguments);
+          break;
+      case "/departures":
+          response = GetDepartureTimesCommand.execute(commandArguments);
           break;
       default:
-//          response.append("Unrecognized command: please resend command with appropriate inputs");
           response = "Unrecognized command: please resend command with appropriate inputs";
           break;
     }
     return response;
-//    return response.toString();
   }
 }

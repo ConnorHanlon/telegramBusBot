@@ -1,7 +1,6 @@
 package commands.bus_commands;
 
-//import commands.bus_commands.BusCommand;
-import TwinCitiesTransitSchema.TextValuePair;
+import TwinCitiesTransitSchema.NextTripRoute;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -11,8 +10,8 @@ import http_request_tools.HTTPRequests;
 import java.util.Arrays;
 import java.util.List;
 
-//public class GetDirectionsCommand extends BusCommand<TextValuePair> {
-public class GetDirectionsCommand {
+
+public class GetStopsCommand {
 
   public static String execute(String request) {
     try {
@@ -46,10 +45,17 @@ public class GetDirectionsCommand {
       "http://svc.metrotransit.org/NexTrip/Directions/request/?format=json"
   **/
   private static String formatRequest(String request) {
-    StringBuilder formatted = new StringBuilder("Directions/");
-    formatted.append(request);
+    String[] arguments = request.split("\\s+");
+    String stop_id = arguments[0];
+    if (arguments.length > 1) {
+      direction = arguments[1];
+    } else {
+      direction = "All";
+    }
+    StringBuilder formatted = new StringBuilder("Stops/");
+    formatted.append(stop_id);
+    formatted.append(RouteDirections.getDirectionID(direction));
     formatted.append("?format=json");
     return formatted.toString();
   }
-
 }
