@@ -15,7 +15,7 @@ import java.util.List;
 public class GetStopsCommand {
 
   public static String execute(String request) {
-    String returnResponse;
+    String formattedResponse;
     try {
       String formattedRequest = formatRequest(request);
       String response = HTTPRequests.makeMetroTransitRequest(formattedRequest);
@@ -23,12 +23,11 @@ public class GetStopsCommand {
       JsonParser jsonParser = new JsonParser();
       JsonArray jsonArray = (jsonParser.parse(response)).getAsJsonArray();
       TextValuePair[] responseArray = gson.fromJson(jsonArray, TextValuePair[].class);
-      String formattedResponse = formatResponse(responseArray);
-      returnResponse = formattedResponse;
+      formattedResponse = formatResponse(responseArray);
     } catch (IllegalArgumentException e) {
-      returnResponse = "One or more inputs missing from the command. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
+      formattedResponse = "One or more inputs missing from the command. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
     }
-    return returnResponse;
+    return formattedResponse;
   }
 
   private static String formatResponse(TextValuePair[] responses) {
@@ -47,7 +46,7 @@ public class GetStopsCommand {
 
   private static String formatRequest(String request) {
     String[] arguments = request.split("\\s+");
-    if(arguments.length != 2) {
+    if(arguments.length < 2) {
       throw new IllegalArgumentException();
     }
     String stop_id = arguments[0];

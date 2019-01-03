@@ -14,6 +14,7 @@ import java.util.List;
 public class GetDirectionsCommand {
 
   public static String execute(String request) {
+    String formattedResponse;
     try {
       String formattedRequest = formatRequest(request);
       String response = HTTPRequests.makeMetroTransitRequest(formattedRequest);
@@ -21,13 +22,11 @@ public class GetDirectionsCommand {
       JsonParser jsonParser = new JsonParser();
       JsonArray jsonArray = (jsonParser.parse(response)).getAsJsonArray();
       TextValuePair[] responseArray = gson.fromJson(jsonArray, TextValuePair[].class);
-      String formattedResponse = formatResponse(responseArray);
-      return formattedResponse;
-    } catch (Exception e) {
-      System.out.println("Failure: GetDirectionsCommand failed to open URL.");
-      e.printStackTrace();
+      formattedResponse = formatResponse(responseArray);
+    } catch (IllegalArgumentException e) {
+      formattedResponse = "The stop ID is missing from the command. Please re-enter command followed by the stop ID";
     }
-    return null;
+    return formattedResponse;
   }
 
   private static String formatResponse(TextValuePair[] responses) {
@@ -48,8 +47,12 @@ public class GetDirectionsCommand {
       "http://svc.metrotransit.org/NexTrip/Directions/request/?format=json"
   **/
   private static String formatRequest(String request) {
+    String[] arguments = request.split("\\s+");
+    if(arguments.length == 0) {
+      throw new IllegalArgumentException();
+    }
     StringBuilder formatted = new StringBuilder("Directions/");
-    formatted.append(request);
+    formatted.append(arguments[0]);
     formatted.append("?format=json");
     return formatted.toString();
   }
