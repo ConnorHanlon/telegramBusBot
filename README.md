@@ -6,7 +6,6 @@ TODO:
 - Add commentary to code that is acceptable for use with Javadocs
 
 - Add commentary to commands on the user side of bot
-- Remove classes no longer in use
 
 - setup database for saving times to notify users inside of telegram commands
 
