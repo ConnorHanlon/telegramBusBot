@@ -1,6 +1,6 @@
 package commands.bus_commands;
 
-import TwinCitiesTransitSchema.NextTripRoute;
+import TwinCitiesTransitSchema.TextValuePair;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -33,7 +33,7 @@ public class GetStopsCommand {
   private static String formatResponse(TextValuePair[] responses) {
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
-    formattedResponse.append("Directions:%0A");
+    formattedResponse.append("Stop Name:%0A");
     for (TextValuePair response : responseList) {
       formattedResponse.append(response.getText());
       formattedResponse.append("%0A");
@@ -41,20 +41,14 @@ public class GetStopsCommand {
     return formattedResponse.toString().replaceAll("\\s+", "%20");
   }
 
-  /** The format of the url for getting directions is
-      "http://svc.metrotransit.org/NexTrip/Directions/request/?format=json"
-  **/
   private static String formatRequest(String request) {
     String[] arguments = request.split("\\s+");
+    // need to handle no direction and too many directions
     String stop_id = arguments[0];
-    if (arguments.length > 1) {
-      direction = arguments[1];
-    } else {
-      direction = "All";
-    }
     StringBuilder formatted = new StringBuilder("Stops/");
     formatted.append(stop_id);
-    formatted.append(RouteDirections.getDirectionID(direction));
+    formatted.append("/");
+    formatted.append(RouteDirections.getDirectionID(arguments[1]));
     formatted.append("?format=json");
     return formatted.toString();
   }

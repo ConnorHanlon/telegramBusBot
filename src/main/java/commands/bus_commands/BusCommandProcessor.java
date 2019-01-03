@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class BusCommandProcessor {
 
   /** Determines the user's command, and calls the corresponding bus command
-      which returns a response. If a command is not recognized, then the
-      response is formatted to return Unrecognized command. **/
+  which returns a response. If a command is not recognized, then the
+  response is formatted to return Unrecognized command. **/
   public static String processCommand(String userRequest) {
     String[] request = userRequest.split("\\s+");
     String[] commandArgsArray = Arrays.copyOfRange(request, 1, request.length);
@@ -15,18 +15,18 @@ public class BusCommandProcessor {
     String command = request[0];
     String response;
     switch (command) {
-     case "/routes":
-         response = GetRoutesCommand.execute(commandArguments);
-         break;
       case "/directions":
-          response = GetDirectionsCommand.execute(commandArguments);
-          break;
+        response = GetDirectionsCommand.execute(commandArguments);
+        break;
       case "/departures":
-          response = GetDepartureTimesCommand.execute(commandArguments);
-          break;
+        response = GetDepartureTimesCommand.execute(commandArguments);
+        break;
+      case "/stops":
+        response = GetStopsCommand.execute(commandArguments);
+        break;
       default:
-          response = "Unrecognized command: please resend command with appropriate inputs";
-          break;
+        response = "Unrecognized command: please resend command with appropriate inputs";
+        break;
     }
     return response;
   }

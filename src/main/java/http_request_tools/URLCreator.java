@@ -18,7 +18,6 @@ public class URLCreator {
       return url;
     }
 
-
     public static URL makeTelegramUserURL(String messageToUser) throws IOException {
       URL url = new URL(TELEGRAM_SEND_MESSAGE_URL.concat(messageToUser));
       return url;
