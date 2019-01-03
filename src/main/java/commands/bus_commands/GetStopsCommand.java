@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import http_request_tools.HTTPRequests;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class GetStopsCommand {
 
   public static String execute(String request) {
+    String returnResponse;
     try {
       String formattedRequest = formatRequest(request);
       String response = HTTPRequests.makeMetroTransitRequest(formattedRequest);
@@ -22,15 +24,17 @@ public class GetStopsCommand {
       JsonArray jsonArray = (jsonParser.parse(response)).getAsJsonArray();
       TextValuePair[] responseArray = gson.fromJson(jsonArray, TextValuePair[].class);
       String formattedResponse = formatResponse(responseArray);
-      return formattedResponse;
-    } catch (Exception e) {
-      System.out.println("Failure: getDepartures failed to open URL.");
-      e.printStackTrace();
+      returnResponse = formattedResponse;
+    } catch (IllegalArgumentException e) {
+      returnResponse = "One or more inputs missing from the command. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
     }
-    return null;
+    return returnResponse;
   }
 
   private static String formatResponse(TextValuePair[] responses) {
+    if(responses.length == 0) {
+      return "Unrecognized stop or direction. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
+    }
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
     formattedResponse.append("Stop Name:%0A");
@@ -38,12 +42,14 @@ public class GetStopsCommand {
       formattedResponse.append(response.getText());
       formattedResponse.append("%0A");
     }
-    return formattedResponse.toString().replaceAll("\\s+", "%20");
+    return formattedResponse.toString();
   }
 
   private static String formatRequest(String request) {
     String[] arguments = request.split("\\s+");
-    // need to handle no direction and too many directions
+    if(arguments.length != 2) {
+      throw new IllegalArgumentException();
+    }
     String stop_id = arguments[0];
     StringBuilder formatted = new StringBuilder("Stops/");
     formatted.append(stop_id);

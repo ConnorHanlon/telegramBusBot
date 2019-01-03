@@ -9,6 +9,8 @@ import static spark.Spark.*;
 public class Main {
 
     /**
+     * Twin Cities Metro Transit API can be found at http://svc.metrotransit.org/
+     *
      * Bot Name: TCMetroTransitBot
      * link: t.me/TCMetroTransitBot
      *

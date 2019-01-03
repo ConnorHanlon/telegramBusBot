@@ -1,6 +1,5 @@
 package commands.bus_commands;
 
-//import commands.bus_commands.BusCommand;
 import TwinCitiesTransitSchema.TextValuePair;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,13 +24,16 @@ public class GetDirectionsCommand {
       String formattedResponse = formatResponse(responseArray);
       return formattedResponse;
     } catch (Exception e) {
-      System.out.println("Failure: getDepartures failed to open URL.");
+      System.out.println("Failure: GetDirectionsCommand failed to open URL.");
       e.printStackTrace();
     }
     return null;
   }
 
   private static String formatResponse(TextValuePair[] responses) {
+    if(responses.length == 0) {
+      return "The stop ID provided is not recognized by Twin Cities Metro Transit.";
+    }
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
     formattedResponse.append("Directions:%0A");
@@ -39,7 +41,7 @@ public class GetDirectionsCommand {
       formattedResponse.append(response.getText());
       formattedResponse.append("%0A");
     }
-    return formattedResponse.toString().replaceAll("\\s+", "%20");
+    return formattedResponse.toString();
   }
 
   /** The format of the url for getting directions is

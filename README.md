@@ -3,8 +3,8 @@ TODO:
 - Re-adjust to command pattern
 - Pull Webhook out of HandleRequest
 
-- Fix generics for BusCommand and other commands
-- Add bus commands
+- Add commentary to code that is acceptable for use with Javadocs
+
 - Add commentary to commands on the user side of bot
 - Remove classes no longer in use
 

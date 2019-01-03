@@ -28,6 +28,6 @@ public class BusCommandProcessor {
         response = "Unrecognized command: please resend command with appropriate inputs";
         break;
     }
-    return response;
+    return response.replaceAll("\\s+", "%20");
   }
 }
