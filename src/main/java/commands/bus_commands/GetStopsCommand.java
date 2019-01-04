@@ -11,10 +11,23 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Command class responsible for determining all of the locations of the stops
+ * that a desired route has.
+ *
+ * @author Connor Hanlon
+ */
 public class GetStopsCommand {
 
-  public static String execute(String request) {
+  /**
+   *
+   *  A request is made of the Twin Cities Metro Transit API using the Telegram user's provided information.
+   *  The response from the API is formatted and returned.
+   *
+   * @param request user provided stop ID and direction
+   * @return formatted response to be sent to the Telegram user.
+   */
+  public static String execute(String[] request) {
     String formattedResponse;
     try {
       String formattedRequest = formatRequest(request);
@@ -31,7 +44,8 @@ public class GetStopsCommand {
   }
 
   private static String formatResponse(TextValuePair[] responses) {
-    if(responses.length == 0) {
+    // If a stop ID or direction is not recognized
+    if(responses.length == 0) {  //
       return "Unrecognized stop or direction. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
     }
     List<TextValuePair> responseList = Arrays.asList(responses);
@@ -44,16 +58,16 @@ public class GetStopsCommand {
     return formattedResponse.toString();
   }
 
-  private static String formatRequest(String request) {
-    String[] arguments = request.split("\\s+");
-    if(arguments.length < 2) {
+
+  private static String formatRequest(String[] request) {
+    if(request.length < 2) {  // if stop ID and/or direction missing
       throw new IllegalArgumentException();
     }
-    String stop_id = arguments[0];
+    String stop_id = request[0];
     StringBuilder formatted = new StringBuilder("Stops/");
     formatted.append(stop_id);
     formatted.append("/");
-    formatted.append(RouteDirections.getDirectionID(arguments[1]));
+    formatted.append(RouteDirections.getDirectionID(request[1]));
     formatted.append("?format=json");
     return formatted.toString();
   }

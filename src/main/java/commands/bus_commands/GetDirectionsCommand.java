@@ -10,10 +10,21 @@ import http_request_tools.HTTPRequests;
 import java.util.Arrays;
 import java.util.List;
 
-//public class GetDirectionsCommand extends BusCommand<TextValuePair> {
+/**
+ * Command class responsible for returning all directions of a given stop.
+ *
+ * @author Connor Hanlon
+ */
 public class GetDirectionsCommand {
 
-  public static String execute(String request) {
+  /**
+   * A request is made of the Twin Cities Metro Transit API using the Telegram user's provided information.
+   * The response from the API is formatted and returned.
+   *
+   * @param request the user provided route ID number
+   * @return formatted response to be sent to the Telegram user.
+   */
+  public static String execute(String[] request) {
     String formattedResponse;
     try {
       String formattedRequest = formatRequest(request);
@@ -44,15 +55,14 @@ public class GetDirectionsCommand {
   }
 
   /** The format of the url for getting directions is
-      "http://svc.metrotransit.org/NexTrip/Directions/request/?format=json"
-  **/
-  private static String formatRequest(String request) {
-    String[] arguments = request.split("\\s+");
-    if(arguments.length == 0) {
+   "http://svc.metrotransit.org/NexTrip/Directions/request/?format=json"
+   **/
+  private static String formatRequest(String[] request) {
+    if(request.length == 0) {
       throw new IllegalArgumentException();
     }
     StringBuilder formatted = new StringBuilder("Directions/");
-    formatted.append(arguments[0]);
+    formatted.append(request[0]);
     formatted.append("?format=json");
     return formatted.toString();
   }

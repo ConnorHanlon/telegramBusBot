@@ -1,16 +1,10 @@
 package commands.bus_commands;
 
 /**
- * Created by Connor Hanlon on 1/3/2019
- *
  * Static class used to convert a direction to a direction identifier recognized by the Twin
- * Cities Metro Transit API. The directions recognized by the API are:
- * South : 1
- * East : 2
- * West : 3
- * North : 4
+ * Cities Metro Transit API.
  *
- * The default direction is North.
+ * @author Connor Hanlon 1/3/2019
  */
 public class RouteDirections {
 

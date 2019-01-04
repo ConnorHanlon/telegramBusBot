@@ -13,6 +13,8 @@ TODO:
 
 - redeploy new bus bot
 
+- fix indentation of methods
+
 ### Difficulties
 - Cannot cast Object[] to T[], which was essential for parsing the json into a
   formatted string response.
