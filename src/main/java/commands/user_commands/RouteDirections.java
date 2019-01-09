@@ -1,4 +1,4 @@
-package commands.bus_commands;
+package commands.user_commands;
 
 /**
  * Static class used to convert a direction to a direction identifier recognized by the Twin

@@ -1,4 +1,4 @@
-package commands.bus_commands;
+package commands.user_commands;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Controls the commands being executed.
  * @author Connor Hanlon
  */
-public class BusCommandProcessor {
+public class UserCommandProcessor {
 
   /**
    * Determines the user's command, and calls the corresponding bus command

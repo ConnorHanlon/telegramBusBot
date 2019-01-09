@@ -1,4 +1,4 @@
-package commands.bus_commands;
+package commands.user_commands;
 
 import TwinCitiesTransitSchema.TextValuePair;
 import com.google.gson.Gson;

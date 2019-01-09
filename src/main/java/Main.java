@@ -30,26 +30,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//       port(getHerokuAssignedPort());
-
-//        post("/mtbotmain", (req, res) -> {
-//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//            Update update = gson.fromJson(req.body(), Update.class);
-//            String chatID = getChatID(update);
-//            if (!update.hasMessage()) {
-//                HandleRequest.sendToTelegram(chatID, "Error: no message received");
-//            } else {
-//                handleCommand(chatID, getText(update));
-//            }
-//            System.out.println(req.headers());
-//            res.body("MetroTransitBot Server");
-//            res.status(200);
-//            return "MetroTransitBot Server";
-//        });
         port(80); // 80 88 443 8443
         post("/mtbotmain", (req, res) -> {
-            // handleCommand("594886854", "/directions 2");
-            // messages.sendMessage()
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Update update = gson.fromJson(req.body(), Update.class);
             try {
@@ -59,9 +41,9 @@ public class Main {
               res.status(400);
               return "failure";
             }
-            res.body("success");
+            res.body("MetroTransitBot Server");
             res.status(200);
-            return "success";
+            return "MetroTransitBot Server";
         });
     }
 

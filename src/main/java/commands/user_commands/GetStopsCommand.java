@@ -1,4 +1,4 @@
-package commands.bus_commands;
+package commands.user_commands;
 
 import TwinCitiesTransitSchema.TextValuePair;
 import com.google.gson.Gson;
@@ -7,7 +7,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import http_request_tools.HTTPRequests;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
