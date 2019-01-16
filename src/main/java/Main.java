@@ -25,7 +25,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        getHerokuAssignedPort();
+        port(getHerokuAssignedPort());
         post("/mtbotmain", (req, res) -> {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Update update = gson.fromJson(req.body(), Update.class);
