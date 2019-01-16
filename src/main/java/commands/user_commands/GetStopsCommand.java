@@ -37,7 +37,7 @@ public class GetStopsCommand {
       TextValuePair[] responseArray = gson.fromJson(jsonArray, TextValuePair[].class);
       formattedResponse = formatResponse(responseArray);
     } catch (IllegalArgumentException e) {
-      formattedResponse = "One or more inputs missing from the command. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
+      formattedResponse = "One or more inputs missing from the command. Please re-enter command followed by a route number and one of the following directions: North, South, East, West.";
     }
     return formattedResponse;
   }
@@ -45,7 +45,7 @@ public class GetStopsCommand {
   private static String formatResponse(TextValuePair[] responses) {
     // If a stop ID or direction is not recognized
     if(responses.length == 0) {  //
-      return "Unrecognized stop or direction. Please re-enter command followed by a stop ID and one of the following directions: North, South, East, West.";
+      return "Unrecognized stop or direction. Please re-enter command followed by a route number and one of the following directions: North, South, East, West.";
     }
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();

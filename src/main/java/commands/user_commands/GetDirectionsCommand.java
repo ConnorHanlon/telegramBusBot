@@ -35,14 +35,14 @@ public class GetDirectionsCommand {
       TextValuePair[] responseArray = gson.fromJson(jsonArray, TextValuePair[].class);
       formattedResponse = formatResponse(responseArray);
     } catch (IllegalArgumentException e) {
-      formattedResponse = "The stop ID is missing from the command. Please re-enter command followed by the stop ID";
+      formattedResponse = "The route number is missing from the command. Please re-enter command followed by the route number";
     }
     return formattedResponse;
   }
 
   private static String formatResponse(TextValuePair[] responses) {
     if(responses.length == 0) {
-      return "The stop ID provided is not recognized by Twin Cities Metro Transit.";
+      return "The route number provided is not recognized by Twin Cities Metro Transit.";
     }
     List<TextValuePair> responseList = Arrays.asList(responses);
     StringBuffer formattedResponse = new StringBuffer();
