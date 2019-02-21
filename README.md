@@ -32,24 +32,25 @@ Test Values:
 
 
 ## Code Structure of Project
+There are three main packages for this project.
+1. TwinCitiesTransitSchema :
+  There are 4 response schemas for the Metro Transit, so within this package there corresponds classes for 
+  each of the schema to allow for object creation of the returned json.
+  
+2. http_request_tools :
+  Handles all requests to the Metro Transit API as well as the Telegram API. The URLs are stored and build using this package's URL creator class.
+
+3. commands :
+  This package is broken up into two packages, one for telegram commands and one for bus/user commands. When a user enters a command, the CommandProcessor determines which user command was entered. Based on the information received, a request url is built and request made of Metro Transit API using the http_request_tools package. The returned json is formatted and a message is returned to the user.
 
 
 
-TODO:
-- Re-adjust to command pattern
-- Pull Webhook out of HandleRequest
-
-- Add commentary to code that is acceptable for use with Javadocs
-
-- Add commentary to commands on the user side of bot
+TODO/FUTURE IMPLENTATION:
 
 - setup database for saving times to notify users inside of telegram commands
 
 - Add Javadocs to generate documentation of bus bot
 
-- redeploy new bus bot
-
-- fix indentation of methods
 
 ### Difficulties
 - Cannot cast Object[] to T[], which was essential for parsing the json into a
