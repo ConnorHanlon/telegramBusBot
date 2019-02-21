@@ -26,9 +26,9 @@ There are three main commands that Telegram users can utilize:
 
 
 Test Values:
-/departures 11167
-/directions 65
-/stops 65 North
+- /departures 11167
+- /directions 65
+- /stops 65 North
 
 
 ## Code Structure of Project
