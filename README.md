@@ -1,4 +1,39 @@
 # README
+
+## About
+
+The Twin Cities Metro Transit bot allows Telegram users to obtain real time tracking information for metro transit stops, routes associated with a stop, as well as the directions of any route in the Twin Cities. 
+
+To locate and use the bot, you must first have access to Telegram with an account. Once you have access, simply follow the link below and click on the start bot button.
+
+https://t.me/TCMetroTransitBot
+
+
+There are three main commands that Telegram users can utilize:
+
+1. /departures
+  - Input: Metro Transit Stop ID located on Metro Transit sign
+  - Return Value: All future times of arrival for desired Stop ID as well as the Route Number and Direction
+
+2. /directions
+  - Input: Route Number
+  - Return Value: Directions of travel for the desired route number. In the form NORTHBOUND, SOUTHBOUND, EASTBOUND, WESTBOUND
+  
+3. /stops
+  - Input: Route Number and Direction (North, South, East, West)
+  - Return Value: List of all stops associated with the input route number and direction
+
+
+Test Values:
+/departures 11167
+/directions 65
+/stops 65 North
+
+
+## Code Structure of Project
+
+
+
 TODO:
 - Re-adjust to command pattern
 - Pull Webhook out of HandleRequest
