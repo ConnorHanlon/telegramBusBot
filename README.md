@@ -8,6 +8,7 @@ To locate and use the bot, you must first have access to Telegram with an accoun
 
 https://t.me/TCMetroTransitBot
 
+## User Commands
 
 There are three main commands that Telegram users can utilize:
 
