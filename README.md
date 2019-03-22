@@ -53,7 +53,7 @@ TODO/FUTURE IMPLENTATION:
 
 
 ### Difficulties
-- Cannot cast Object[] to T[], which was essential for parsing the json into a
+- Cannot cast Object[] to T[], which was for parsing the json into a
   formatted string response.
 
 - cannot have a static abstract method
@@ -61,9 +61,7 @@ TODO/FUTURE IMPLENTATION:
 - BusCommand abstract class was originally designed to have an implemented execute method, and
   leave the formatResponse and formatRequest method implementation up to the commands
   that extend the class. However I did not want to have to instantiate a command
-  object to format the responses and requests. Additionally, BusCommand's execute requires the
+  object to format the responses and requests. Additionally, BusCommand's execute required the
   use of generics, and as stated previously Object Arrays cannot be cast to generic arrays.
-
-### Notes
-
-- StringBuffer was used over StringBuilder because it is thread safe
+  
+- Generics type parameter cannot be used with static methods because the methods and variables would then be shared between the generic classes.
