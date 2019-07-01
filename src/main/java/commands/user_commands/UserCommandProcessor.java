@@ -18,6 +18,11 @@ public class UserCommandProcessor {
     String[] commandArguments = Arrays.copyOfRange(request, 1, request.length);
     String command = request[0];
     String response;
+    /**
+    Add /stats -> gets number of users, number of commands processed from db
+    /setSchedule -> sets up times to send notifications to a user for a specified
+                    route
+    */
     switch (command) {
       case "/directions":
         response = GetDirectionsCommand.execute(commandArguments);

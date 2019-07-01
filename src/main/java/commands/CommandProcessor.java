@@ -14,7 +14,8 @@ public class CommandProcessor {
 
   public static void process(Update update) {
     String chatID = update.getMessage().getChatId().toString();
-    // Update DB information ie add user to the database if not
+    // Update DB information ie add user to the database if not already added.
+    // also adds number of updates handled, number of total commands executed
     String userRequest = update.getMessage().getText();
     try {
       String messageToUser = UserCommandProcessor.processCommand(userRequest);
