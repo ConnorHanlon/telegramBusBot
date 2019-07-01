@@ -1,8 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import commands.CommandProcessor;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import static spark.Spark.*;
 
@@ -14,9 +12,6 @@ public class Main {
      * Bot Name: TCMetroTransitBot
      * link: t.me/TCMetroTransitBot
      *
-     * Use this token to access HTTP API:
-     *
-     * @param args
      */
 
     static int getHerokuAssignedPort() {
@@ -30,7 +25,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        port(80); // 80 88 443 8443
+        port(getHerokuAssignedPort());
         post("/mtbotmain", (req, res) -> {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Update update = gson.fromJson(req.body(), Update.class);
